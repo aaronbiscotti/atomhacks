@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Medical Centers Search</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/handlebars/4.7.7/handlebars.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="medical.js"></script>
+    <link rel="stylesheet" href="style.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="/style.css" id="theme-stylesheet">
+    <style>
+        #map {
+            width: 75%;
+        }
+    </style>
+    <script>
+        const CONFIGURATION = {
+            "locations": [{
+                    "title": "Presbyterian Lawrence Hospital",
+                    "coords": {
+                        "lat": 40.942252974343454,
+                        "lng": -73.83693266627043
+                    },
+                    "placeId": "ChIJ_TCcBbKSwokRMeANxguXZfc"
+                },
+                {
+                    "title": "Bronx’s Premier Medical Center",
+                    "coords": {
+                        "lat": 40.89597337856907,
+                        "lng": -73.8601257085983
+                    },
+                    "placeId": "EiU0MjM4IEJyb254IEJsdmQsIEJyb254LCBOWSAxMDQ2NiwgVVNBIlESTwo0CjIJwXKOWt_ywokRM9-ZqTeYIaMaHgsQ7sHuoQEaFAoSCVXVWLcq88KJEVWtPmf2Bjk6DBCOISoUChIJHTLruyPzwokRZU2-nLSYL9I"
+                },
+                {
+                    "title": "Montefiore Medical Center",
+                    "coords": {
+                        "lat": 40.8806354126364,
+                        "lng": -73.88105060489349
+                    },
+                    "placeId": "EiYzNDI0IEtvc3N1dGggQXZlLCBCcm9ueCwgTlkgMTA0NjcsIFVTQSJREk8KNAoyCRsorPIM88KJEbHp7rJGLkH5Gh4LEO7B7qEBGhQKEgkzbdlWE_PCiRHu9TTfxWQBewwQ4BoqFAoSCdepgL0M88KJEdy0KCamqoaj"
+                },
+                {
+                    "title": "Children’s Hospital at Montefiore",
+                    "coords": {
+                        "lat": 40.88053020289965,
+                        "lng": -73.87899415092619
+                    },
+                    "placeId": "ChIJ6Vg1FA3zwokRRtzl301rV8A"
+                },
+                {
+                    "title": "Montefiore Mount Vernon Hospital",
+                    "coords": {
+                        "lat": 40.91274522159237,
+                        "lng": -73.84053326441803
+                    },
+                    "placeId": "ChIJq3TfnkqNwokRpn54nb6f9rg"
+                },
+            ],
+            "mapOptions": {
+                "center": {
+                    "lat": 38.0,
+                    "lng": -100.0
+                },
+                "fullscreenControl": true,
+                "mapTypeControl": false,
+                "streetViewControl": false,
+                "zoom": 4,
+                "zoomControl": true,
+                "maxZoom": 17
+            },
+            "mapsApiKey": "AIzaSyDpg9x9j6sSa13KxzmnASBYz2aDMzfDvoU",
+            "capabilities": {
+                "input": true,
+                "autocomplete": true,
+                "directions": false,
+                "distanceMatrix": true,
+                "details": false
+            }
+        };
+
+        function initMap() {
+            new LocatorPlus(CONFIGURATION);
+        }
+    </script>
+    <script id="locator-result-items-tmpl" type="text/x-handlebars-template">
+        {{#each locations}}
+          <li class="location-result" data-location-index="{{index}}">
+            <button class="select-location">
+              <h2 class="name">{{title}}</h2>
+            </button>
+            <div class="address">{{address1}}<br>{{address2}}</div>
+            {{#if travelDistanceText}}
+              <div class="distance">{{travelDistanceText}}</div>
+            {{/if}}
+          </li>
+        {{/each}}
+      </script>
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-items">
+            <div class="logo">
+                <h3 style="cursor: pointer" onclick="location.href='/index.html';">QuickMed</h3>
+            </div>
+            <div class="section-2">
+                <h4>+1 (917) 715 - 4816&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;<a
+                        href="mailto: tanga@bxscience.edu">Contact</a></h4>
+            </div>
+        </div>
+    </nav>
+    <div class="page2">
+        <h1 style="color: white">Medical Centers Near You</h1>
+        <h3 style="color: white; margin-top: -10px; font-weight: 200; margin-bottom: 30px;">Knowing the closest source
+            of medical attention
+            is important.
+            QuickMed helps you stay
+            on top of that.</h3>
+        <div id="map-container">
+            <div id="locations-panel">
+                <div id="locations-panel-list">
+                    <header>
+                        <h1 class="search-title">
+                            <img src="https://fonts.gstatic.com/s/i/googlematerialicons/place/v15/24px.svg" />
+                            Find a location near you
+                        </h1>
+                        <div class="search-input">
+                            <input id="location-search-input" placeholder="Enter your address or zip code">
+                            <div id="search-overlay-search" class="search-input-overlay search">
+                                <button id="location-search-button">
+                                    <img class="icon"
+                                        src="https://fonts.gstatic.com/s/i/googlematerialicons/search/v11/24px.svg"
+                                        alt="Search" />
+                                </button>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="section-name" id="location-results-section-name">
+                        All locations
+                    </div>
+                    <div class="results">
+                        <ul id="location-results-list"></ul>
+                    </div>
+                </div>
+            </div>
+            <div id="map"></div>
+        </div>
+    </div>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpg9x9j6sSa13KxzmnASBYz2aDMzfDvoU&callback=initMap&libraries=places,geometry&solution_channel=GMP_QB_locatorplus_v4_cABD"
+        async defer></script>
+</body>
+
+</html>
+<!-- AIzaSyDpg9x9j6sSa13KxzmnASBYz2aDMzfDvoU -->
