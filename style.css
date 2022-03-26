@@ -5,7 +5,7 @@ body {
     margin: auto;
     padding: 0;
     min-height: 100vh;
-    background: black;
+    background: #1A1A1A;
     font-family: 'DM Sans', sans-serif;
     overflow: hidden;
 }
@@ -17,22 +17,24 @@ ul {
     text-decoration: none;
 }
 
+.logo {
+    width: 160px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -5px;
+    font-size: 25px;
+}
+
 li {
     text-decoration: none;
     color: black;
     display: inline;
 }
-
-.page {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-}
-
 .navbar {
-    height: 50px;
-    background: white;
+    height: 100px;
+    color: white;
     display: flex;
     align-items: center;
 }
@@ -42,7 +44,95 @@ li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 30px 0 30px;
+    padding: 0 20px 0 30px;
 }
 
+    .page {
+        height: 40rem;
+        padding: 30px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        }
+
+        .header {
+            font-size: 25px;
+            padding-bottom: 20px;
+        }
+
+        .services {
+            background: #393939;
+            width: 70%;
+            height: 20rem;
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .section-one {
+            width: 400px;
+            border-radius: 10px;
+            margin: 20px;
+            background: black;
+            background: linear-gradient(35deg, #E3B3F9, #93D7F4);
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            }
+
+        .section-two {
+            width: 400px;
+            border-radius: 10px;
+            margin: 20px;
+            background: black;
+            background: linear-gradient(35deg, #A0BEF8, #F8EBA6);
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .section-three {
+            width: 400px;
+            border-radius: 10px;
+            margin: 20px;
+            background: black;
+            background: linear-gradient(35deg, #9EF9D8, #69EC48);
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            }
+
+        .section-four {
+            width: 400px;
+            border-radius: 10px;
+            margin: 20px;
+            background: black;
+            background: linear-gradient(-35deg, #FFC2C2, #FFD7A8);
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            }
+
+        .grow {
+            transition: all .2s ease-in-out;
+        }
+
+        .grow:hover {
+            transform: scale(1.04);
+        }
 /* Hello */
