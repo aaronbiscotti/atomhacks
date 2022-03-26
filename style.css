@@ -10,6 +10,11 @@ body {
     overflow: hidden;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -84,6 +89,7 @@ li {
             flex-direction: column;
             align-items: center;
             cursor: pointer;
+            color: #1A1A1A;
             }
 
         .section-two {
@@ -98,6 +104,7 @@ li {
             flex-direction: column;
             align-items: center;
             cursor: pointer;
+            color: #1A1A1A;
         }
 
         .section-three {
@@ -105,13 +112,14 @@ li {
             border-radius: 10px;
             margin: 20px;
             background: black;
-            background: linear-gradient(35deg, #9EF9D8, #69EC48);
+            background: linear-gradient(35deg, #F7EBA8, #69EC48);
             display: flex;
             justify-content: center;
             text-align: center;
             flex-direction: column;
             align-items: center;
             cursor: pointer;
+            color: #1A1A1A
             }
 
         .section-four {
@@ -119,13 +127,14 @@ li {
             border-radius: 10px;
             margin: 20px;
             background: black;
-            background: linear-gradient(-35deg, #FFC2C2, #FFD7A8);
+            background: linear-gradient(35deg, #69EC48, #E2B4F9);
             display: flex;
             justify-content: center;
             text-align: center;
             flex-direction: column;
             align-items: center;
             cursor: pointer;
+            color: #1A1A1A;
             }
 
         .grow {
@@ -135,4 +144,8 @@ li {
         .grow:hover {
             transform: scale(1.04);
         }
-/* Hello */
+
+        #map {
+            height: 500px;
+            width: 100%;
+        }
